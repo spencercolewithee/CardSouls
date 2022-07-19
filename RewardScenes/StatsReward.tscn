@@ -1,0 +1,169 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/GUI/buttonLong_blue_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GUI/muscle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GUI/clover.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GUI/buttonLong_grey.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Background/Reward.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GUI/hand.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GUI/brain.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GUI/buttonLong_blue.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://RewardScenes/StrengthButton.gd" type="Script" id=10]
+[ext_resource path="res://RewardScenes/DexterityButton.gd" type="Script" id=11]
+[ext_resource path="res://RewardScenes/IntelligenceButton.gd" type="Script" id=12]
+[ext_resource path="res://RewardScenes/LuckButton.gd" type="Script" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 2
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[node name="StatsReward" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 513.272, 300.271 )
+scale = Vector2( 0.79994, 0.833143 )
+texture = ExtResource( 5 )
+
+[node name="Strength" type="Sprite" parent="."]
+position = Vector2( 138.068, 371.893 )
+scale = Vector2( 0.730769, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Dexterity" type="Sprite" parent="."]
+position = Vector2( 376.606, 368.667 )
+scale = Vector2( 0.304338, 0.227268 )
+texture = ExtResource( 6 )
+
+[node name="Intelligence" type="Sprite" parent="."]
+position = Vector2( 637.36, 362.681 )
+scale = Vector2( 0.406496, 0.445102 )
+texture = ExtResource( 7 )
+
+[node name="Luck" type="Sprite" parent="."]
+position = Vector2( 885.587, 370.211 )
+scale = Vector2( 0.677527, 0.641784 )
+texture = ExtResource( 3 )
+
+[node name="StrengthButton" type="TextureButton" parent="."]
+margin_left = 62.0803
+margin_top = 473.0
+margin_right = 252.08
+margin_bottom = 522.0
+rect_scale = Vector2( 0.777756, 0.804666 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DexterityButton" type="TextureButton" parent="."]
+margin_left = 302.016
+margin_top = 473.0
+margin_right = 492.016
+margin_bottom = 522.0
+rect_scale = Vector2( 0.777756, 0.804666 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntelligenceButton" type="TextureButton" parent="."]
+margin_left = 559.016
+margin_top = 472.0
+margin_right = 749.016
+margin_bottom = 521.0
+rect_scale = Vector2( 0.777756, 0.804666 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LuckButton" type="TextureButton" parent="."]
+margin_left = 811.016
+margin_top = 473.0
+margin_right = 1001.02
+margin_bottom = 522.0
+rect_scale = Vector2( 0.777756, 0.804666 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StrengthLabel" type="Label" parent="."]
+margin_left = 63.0
+margin_top = 473.0
+margin_right = 209.0
+margin_bottom = 508.0
+custom_fonts/font = SubResource( 1 )
+text = "+1 STR"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DexterityLabel" type="Label" parent="."]
+margin_left = 302.889
+margin_top = 473.0
+margin_right = 448.889
+margin_bottom = 508.0
+custom_fonts/font = SubResource( 1 )
+text = "+1 DEX"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntelligenceLabel" type="Label" parent="."]
+margin_left = 559.846
+margin_top = 472.159
+margin_right = 705.846
+margin_bottom = 507.159
+custom_fonts/font = SubResource( 1 )
+text = "+1 INT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LuckLabel" type="Label" parent="."]
+margin_left = 811.715
+margin_top = 472.953
+margin_right = 957.715
+margin_bottom = 507.953
+custom_fonts/font = SubResource( 1 )
+text = "+1 LCK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RewardLabel" type="Label" parent="."]
+margin_left = 425.0
+margin_top = 9.0
+margin_right = 599.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 1 )
+text = "Choose Wisely..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

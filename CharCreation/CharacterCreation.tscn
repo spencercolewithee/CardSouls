@@ -1,0 +1,222 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://knight.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Background/Reward.png" type="Texture" id=2]
+[ext_resource path="res://CharCreation/StrUp.gd" type="Script" id=3]
+[ext_resource path="res://CharCreation/dexUp.gd" type="Script" id=4]
+[ext_resource path="res://CharCreation/intUp.gd" type="Script" id=5]
+[ext_resource path="res://CharCreation/luckUp.gd" type="Script" id=6]
+[ext_resource path="res://CharCreation/strDown.gd" type="Script" id=7]
+[ext_resource path="res://CharCreation/strStat.gd" type="Script" id=8]
+[ext_resource path="res://CharCreation/confirm.gd" type="Script" id=9]
+[ext_resource path="res://CharCreation/dexStat.gd" type="Script" id=10]
+[ext_resource path="res://CharCreation/intStat.gd" type="Script" id=11]
+[ext_resource path="res://CharCreation/luckStat.gd" type="Script" id=12]
+[ext_resource path="res://CharCreation/dexDown.gd" type="Script" id=13]
+[ext_resource path="res://CharCreation/intDown.gd" type="Script" id=14]
+[ext_resource path="res://CharCreation/luckDown.gd" type="Script" id=15]
+[ext_resource path="res://CharCreation/Total.gd" type="Script" id=16]
+[ext_resource path="res://World.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/GUI/panel_blue.png" type="Texture" id=18]
+
+[node name="CharacterCreation" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 514.048, 302.381 )
+scale = Vector2( 0.801169, 0.832011 )
+texture = ExtResource( 2 )
+
+[node name="Panel" type="Sprite" parent="."]
+position = Vector2( 533.873, 227.297 )
+scale = Vector2( 2.96146, 2.64998 )
+texture = ExtResource( 18 )
+
+[node name="Knight" type="Sprite" parent="."]
+position = Vector2( 200.644, 257.524 )
+scale = Vector2( 0.840298, 0.903626 )
+texture = ExtResource( 1 )
+
+[node name="Strength" type="RichTextLabel" parent="."]
+margin_left = 406.673
+margin_top = 193.454
+margin_right = 481.673
+margin_bottom = 217.454
+text = "Strength"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dexterity" type="RichTextLabel" parent="."]
+margin_left = 406.673
+margin_top = 233.524
+margin_right = 481.673
+margin_bottom = 257.524
+text = "Dexterity"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Intelligence" type="RichTextLabel" parent="."]
+margin_left = 407.0
+margin_top = 271.676
+margin_right = 494.0
+margin_bottom = 295.676
+text = "Intelligence"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Luck" type="RichTextLabel" parent="."]
+margin_left = 407.0
+margin_top = 318.332
+margin_right = 494.0
+margin_bottom = 342.332
+text = "Luck"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerNode" type="Control" parent="."]
+margin_left = 577.0
+margin_top = 193.0
+margin_right = 683.0
+margin_bottom = 342.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="strStat" type="Label" parent="ContainerNode"]
+margin_left = 19.0559
+margin_top = 0.453995
+margin_right = 27.0559
+margin_bottom = 14.454
+text = "3"
+script = ExtResource( 8 )
+
+[node name="str-" type="Button" parent="ContainerNode/strStat"]
+margin_left = -40.8242
+margin_top = -7.57695
+margin_right = -23.8242
+margin_bottom = 12.423
+text = "-"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="str+" type="Button" parent="ContainerNode/strStat"]
+margin_left = 29.2316
+margin_top = -7.57695
+margin_right = 49.2316
+margin_bottom = 12.423
+text = "+"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dexStat" type="Label" parent="ContainerNode"]
+margin_left = 19.0559
+margin_top = 40.524
+margin_right = 27.0559
+margin_bottom = 54.524
+text = "3"
+script = ExtResource( 10 )
+
+[node name="dex+" type="Button" parent="ContainerNode/dexStat"]
+margin_left = 29.2316
+margin_top = -3.0
+margin_right = 49.2316
+margin_bottom = 17.0
+text = "+"
+script = ExtResource( 4 )
+
+[node name="dex-" type="Button" parent="ContainerNode/dexStat"]
+margin_left = -39.9474
+margin_top = -3.0
+margin_right = -22.9474
+margin_bottom = 17.0
+text = "-"
+script = ExtResource( 13 )
+
+[node name="intStat" type="Label" parent="ContainerNode"]
+margin_left = 19.0559
+margin_top = 78.676
+margin_right = 27.0559
+margin_bottom = 92.676
+text = "3"
+script = ExtResource( 11 )
+
+[node name="int+" type="Button" parent="ContainerNode/intStat"]
+margin_left = 29.2316
+margin_right = 49.2316
+margin_bottom = 20.0
+text = "+"
+script = ExtResource( 5 )
+
+[node name="int-" type="Button" parent="ContainerNode/intStat"]
+margin_left = -40.8242
+margin_right = -23.8242
+margin_bottom = 20.0
+text = "-"
+script = ExtResource( 14 )
+
+[node name="luckStat" type="Label" parent="ContainerNode"]
+margin_left = 19.0559
+margin_top = 125.332
+margin_right = 27.0559
+margin_bottom = 139.332
+text = "3"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="luck+" type="Button" parent="ContainerNode/luckStat"]
+margin_left = 29.2316
+margin_top = -4.15448
+margin_right = 49.2316
+margin_bottom = 15.8455
+text = "+"
+script = ExtResource( 6 )
+
+[node name="luck-" type="Button" parent="ContainerNode/luckStat"]
+margin_left = -39.9474
+margin_top = -4.15448
+margin_right = -22.9474
+margin_bottom = 15.8455
+text = "-"
+script = ExtResource( 15 )
+
+[node name="TotalText" type="Label" parent="ContainerNode"]
+margin_left = -156.418
+margin_top = -82.621
+margin_right = -46.4184
+margin_bottom = -68.621
+text = "Stats Remaining To Allocate: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total" type="Label" parent="ContainerNode"]
+margin_left = 40.1073
+margin_top = -82.621
+margin_right = 80.1073
+margin_bottom = -68.621
+text = "5"
+script = ExtResource( 16 )
+
+[node name="Button" type="Button" parent="ContainerNode"]
+margin_left = 202.473
+margin_top = 64.524
+margin_right = 264.473
+margin_bottom = 84.524
+text = "Confirm"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+target = ExtResource( 17 )

@@ -1,0 +1,243 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://GUIScenes/Bar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Player/Knight.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GUI/PoisonStatus.png" type="Texture" id=4]
+[ext_resource path="res://Assets/GUI/RageStatus.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GUI/intent_block.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/GUI/RitualStatus.png" type="Texture" id=8]
+[ext_resource path="res://Assets/GUI/WeakStatus.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GUI/FrailStatus.png" type="Texture" id=10]
+[ext_resource path="res://Assets/GUI/EntangledStatus.png" type="Texture" id=11]
+[ext_resource path="res://Assets/GUI/VulnerableStatus.png" type="Texture" id=12]
+[ext_resource path="res://Assets/GUI/HexStatus.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 2
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+outline_size = 3
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Player" type="MarginContainer"]
+margin_right = 500.0
+margin_bottom = 595.0
+rect_pivot_offset = Vector2( 250, 297.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 500.0
+margin_bottom = 595.0
+
+[node name="ImageContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+
+[node name="Image" type="Sprite" parent="VBoxContainer/ImageContainer"]
+scale = Vector2( 0.946041, 0.84754 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Bar" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 504.0
+margin_bottom = 557.0
+
+[node name="BlockPlate" type="Sprite" parent="."]
+visible = false
+position = Vector2( -56.633, 526.682 )
+scale = Vector2( 2.475, 2.197 )
+texture = ExtResource( 6 )
+
+[node name="BlockText" type="Label" parent="BlockPlate"]
+margin_left = -19.065
+margin_top = -9.453
+margin_right = 20.935
+margin_bottom = 13.547
+hint_tooltip = "Negates X Attack Damage. Removed at the start of the owner's next turn."
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RageStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 34.4927, 609.541 )
+scale = Vector2( 1.92364, 1.82182 )
+texture = ExtResource( 5 )
+
+[node name="RageText" type="Label" parent="RageStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Rage: Increases attack damage by X."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BurnStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 161.734, 609.167 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 4 )
+
+[node name="BurnText" type="Label" parent="BurnStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Poison: At the beginning of its turn, the target loses X HP and 1 stack of poison."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeakStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 288.904, 608.133 )
+scale = Vector2( 1.82182, 1.82182 )
+texture = ExtResource( 9 )
+
+[node name="WeakText" type="Label" parent="WeakStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Weak: Target deals 25% less attack damage for X turns."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FrailStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 418.015, 609.164 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 10 )
+
+[node name="FrailText" type="Label" parent="FrailStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = " Frail: Block gained from cards is reduced by 25%."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VulnerableStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 32.5924, 673.579 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 12 )
+
+[node name="VulnerableText" type="Label" parent="VulnerableStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Vulnerable: Target takes 50% more damage from attacks for X turns."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EntangledStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 160.757, 672.984 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 11 )
+
+[node name="EntangledText" type="Label" parent="EntangledStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Entangled: Start your turn with 1 less Stamina for X turns."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RitualStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 289.187, 673.23 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 8 )
+
+[node name="RitualText" type="Label" parent="RitualStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Ritual: At the end of its turn, gains X Rage."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HexStatus" type="Sprite" parent="."]
+visible = false
+position = Vector2( 417.775, 673.23 )
+scale = Vector2( 1.87273, 1.82182 )
+texture = ExtResource( 13 )
+
+[node name="HexText" type="Label" parent="HexStatus"]
+margin_left = 6.823
+margin_top = -10.403
+margin_right = 46.823
+margin_bottom = 13.597
+hint_tooltip = "Hex: For X turns, whenever you play a card lose 2 HP."
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
