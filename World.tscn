@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://OverworldPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Door.gd" type="Script" id=2]
+[ext_resource path="res://door.png" type="Texture" id=3]
+[ext_resource path="res://CombatEncounter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Inventory.gd" type="Script" id=5]
+[ext_resource path="res://inventory_ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Coin.gd" type="Script" id=7]
+[ext_resource path="res://Items/coin2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/GUI/DarkStone.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40.0327, 63.7378 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.042, 81.8383 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 18.023
+
+[node name="World" type="Node"]
+
+[node name="OverworldPlayer" parent="." instance=ExtResource( 1 )]
+z_index = 5
+
+[node name="InvScript" type="Node2D" parent="OverworldPlayer"]
+script = ExtResource( 5 )
+window_scene = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="OverworldPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldPlayer/Area2D"]
+position = Vector2( 545.967, 301.738 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 36.6965, 0 )
+scale = Vector2( 1.0036, 0.997948 )
+polygon = PoolVector2Array( -36.8536, 0.7945, 1026.37, 3.70135, 1026.37, 601.701, -36.4748, 601.76, -36.0555, 329.171, 27.3832, 330.926, 27.3832, 544.632, 921.013, 543.507, 922.132, 410.785, 814.366, 407.701, 816.366, 257.701, 918.776, 260.065, 921.013, 66.6049, 29.62, 65.4801, 29.62, 164.46, -36.2611, 166.434 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 21.1759, 168.361 )
+polygon = PoolVector2Array( -2.77515, 1.07385, -0.973343, 161.434, -33.4057, 162.335, -33.4057, 1.07385 )
+
+[node name="Door" type="Area2D" parent="."]
+show_behind_parent = true
+script = ExtResource( 2 )
+target = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Door"]
+show_behind_parent = true
+light_mask = 2
+position = Vector2( 66.7399, 247.746 )
+scale = Vector2( 0.350492, 0.441026 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 66.7399, 247.746 )
+shape = SubResource( 1 )
+
+[node name="Coin" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Coin"]
+position = Vector2( 741.19, 138.647 )
+scale = Vector2( 0.0192557, 0.0206824 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+position = Vector2( 741.744, 139.856 )
+shape = SubResource( 2 )
+
+[node name="Coin2" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Coin2"]
+position = Vector2( 820.085, 138.647 )
+scale = Vector2( 0.0192557, 0.0206824 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2"]
+position = Vector2( 820.085, 138.647 )
+shape = SubResource( 2 )
+
+[node name="Coin3" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Coin3"]
+position = Vector2( 895.595, 138.647 )
+scale = Vector2( 0.0192557, 0.0206824 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin3"]
+position = Vector2( 895.595, 138.647 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512.277, 33.4644 )
+scale = Vector2( 4.59199, 0.517482 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 32.1801, 115.988 )
+scale = Vector2( 0.2844, 0.873375 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 31.8374, 440.268 )
+scale = Vector2( 0.28463, 1.91378 )
+texture = ExtResource( 9 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 991.587, 303.941 )
+scale = Vector2( 0.28463, 4.04341 )
+texture = ExtResource( 9 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 512.95, 572.099 )
+scale = Vector2( 4.59399, 0.47158 )
+texture = ExtResource( 9 )
+
+[connection signal="area_entered" from="Coin" to="OverworldPlayer" method="_on_Coin_area_entered"]
+[connection signal="area_entered" from="Coin2" to="OverworldPlayer" method="_on_Coin_area_entered"]
+[connection signal="area_entered" from="Coin3" to="OverworldPlayer" method="_on_Coin_area_entered"]

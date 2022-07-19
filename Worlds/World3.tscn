@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Inventory.gd" type="Script" id=1]
+[ext_resource path="res://inventory_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://OverworldPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://door.png" type="Texture" id=4]
+[ext_resource path="res://Doors/Door3.gd" type="Script" id=7]
+[ext_resource path="res://Doors/Door4.gd" type="Script" id=8]
+[ext_resource path="res://Worlds/World5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Worlds/World4again.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/GUI/DarkStone.png" type="Texture" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 38.4343, 58.0136 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 47.5894, 81.8383 )
+
+[node name="World3" type="Node"]
+
+[node name="OverworldPlayer" parent="." instance=ExtResource( 3 )]
+z_index = 5
+
+[node name="InvScript" type="Node2D" parent="OverworldPlayer"]
+script = ExtResource( 1 )
+window_scene = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="OverworldPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldPlayer/Area2D"]
+position = Vector2( 530.508, 311.251 )
+shape = SubResource( 1 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0.62735, -1.91969, 0.62735, 196.971, 63.3648, 196.971, 63.3648, 70.1617, 956.373, 68.8268, 957.708, 225.003, 1024.45, 225.003, 1023.11, 0.749985 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -0.707489, 382.514, -0.707489, 600.093, 1025.78, 601.428, 1024.45, 418.555, 960.377, 418.555, 961.712, 544.03, 66.0345, 546.699, 64.6996, 382.514 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -2.04233, 198.306, -62.1101, 198.306, -63.445, 383.849, -3.37717, 383.849 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 1024.45, 227.673, 1088.52, 227.673, 1091.19, 418.555, 1025.78, 418.555 )
+
+[node name="Door3" type="Area2D" parent="."]
+show_behind_parent = true
+position = Vector2( -207.348, 311.251 )
+script = ExtResource( 7 )
+target = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Door3"]
+show_behind_parent = true
+light_mask = 2
+position = Vector2( 257.657, -12.1394 )
+scale = Vector2( 0.350492, 0.441026 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
+position = Vector2( 251.788, -18.1712 )
+shape = SubResource( 3 )
+
+[node name="Door4" type="Area2D" parent="."]
+show_behind_parent = true
+position = Vector2( 726.233, 336.268 )
+script = ExtResource( 8 )
+target = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Door4"]
+show_behind_parent = true
+light_mask = 2
+position = Vector2( 257.657, -12.1394 )
+scale = Vector2( 0.350492, 0.441026 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door4"]
+position = Vector2( 257.657, -19.4282 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512.705, 31.9647 )
+scale = Vector2( 4.59156, 0.527408 )
+texture = ExtResource( 11 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 513.965, 567.635 )
+scale = Vector2( 4.59156, 0.527408 )
+texture = ExtResource( 11 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 32.9309, 458.823 )
+scale = Vector2( 0.277351, 1.32357 )
+texture = ExtResource( 11 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 31.7417, 139.521 )
+scale = Vector2( 0.277351, 1.31349 )
+texture = ExtResource( 11 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 992.621, 153.197 )
+scale = Vector2( 0.277351, 1.50498 )
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+position = Vector2( 994.999, 470.12 )
+scale = Vector2( 0.277351, 1.11193 )
+texture = ExtResource( 11 )

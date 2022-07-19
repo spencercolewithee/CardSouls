@@ -1,0 +1,268 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Assets/Background/crypt.png" type="Texture" id=1]
+[ext_resource path="res://CombatEncounter.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Cards/BordersAndBacks/Back_Texture.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Cards/BordersAndBacks/Gold_Border.png" type="Texture" id=4]
+[ext_resource path="res://Draw.gd" type="Script" id=5]
+[ext_resource path="res://DiscardPile.gd" type="Script" id=6]
+[ext_resource path="res://PlayerScenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/Cards/BordersAndBacks/Attack/Energy.png" type="Texture" id=10]
+[ext_resource path="res://TurnQueue.gd" type="Script" id=11]
+[ext_resource path="res://GUIScenes/TurnButton.gd" type="Script" id=13]
+[ext_resource path="res://Assets/GUI/game_over.jpg" type="Texture" id=14]
+[ext_resource path="res://Assets/GUI/buttonRound_blue.png" type="Texture" id=15]
+[ext_resource path="res://Assets/GUI/buttonLong_blue.png" type="Texture" id=18]
+[ext_resource path="res://Assets/GUI/buttonLong_grey.png" type="Texture" id=19]
+[ext_resource path="res://Assets/GUI/buttonLong_blue_pressed.png" type="Texture" id=20]
+[ext_resource path="res://RewardScenes/CombatReward.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/GUI/panel_blue.png" type="Texture" id=22]
+[ext_resource path="res://Assets/GUI/buttonRound_grey.png" type="Texture" id=23]
+[ext_resource path="res://DeckCount.gd" type="Script" id=24]
+[ext_resource path="res://ListScenes/DeckList.tscn" type="PackedScene" id=25]
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 2
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 3
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 3
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 2
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+outline_size = 2
+outline_color = Color( 0.027451, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 9 )
+
+[node name="TurnQueue" type="Node"]
+script = ExtResource( 11 )
+target = ExtResource( 21 )
+
+[node name="CombatEncounter" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="GameOver" type="Sprite" parent="CombatEncounter"]
+visible = false
+scale = Vector2( 1.2042, 1.25255 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Enemies" type="Node" parent="CombatEncounter"]
+
+[node name="Players" type="Node" parent="CombatEncounter"]
+
+[node name="Player" parent="CombatEncounter/Players" instance=ExtResource( 8 )]
+visible = false
+
+[node name="BackgroundContainer" type="MarginContainer" parent="CombatEncounter"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="CombatEncounter/BackgroundContainer"]
+scale = Vector2( 0.266627, 0.277775 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Deck" type="Node2D" parent="CombatEncounter"]
+position = Vector2( 915, 200 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Draw" type="TextureButton" parent="CombatEncounter/Deck"]
+margin_right = 40.0
+margin_bottom = 56.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeckCount" type="TextureButton" parent="CombatEncounter"]
+margin_left = 896.468
+margin_top = 184.34
+margin_right = 931.468
+margin_bottom = 222.34
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 23 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+window_scene = ExtResource( 25 )
+
+[node name="DeckCountText" type="Label" parent="CombatEncounter"]
+margin_left = 896.639
+margin_top = 184.137
+margin_right = 930.639
+margin_bottom = 219.137
+custom_fonts/font = SubResource( 4 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardEngine" type="Node" parent="CombatEncounter"]
+
+[node name="CardsInPlay" type="Node" parent="CombatEncounter"]
+
+[node name="Discard" type="Node2D" parent="CombatEncounter"]
+position = Vector2( 915, 40 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DiscardPile" type="TextureButton" parent="CombatEncounter/Discard"]
+margin_right = 40.0
+margin_bottom = 56.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamina" type="Sprite" parent="CombatEncounter"]
+position = Vector2( 69.2873, 530.585 )
+scale = Vector2( 0.811819, 0.806581 )
+texture = ExtResource( 10 )
+
+[node name="StaminaText" type="Label" parent="CombatEncounter/Stamina"]
+margin_left = -44.0319
+margin_top = -24.5538
+margin_right = 38.9681
+margin_bottom = 32.4462
+custom_fonts/font = SubResource( 1 )
+text = "3/3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnButton" type="TextureButton" parent="CombatEncounter"]
+margin_left = 859.0
+margin_top = 526.0
+margin_right = 1079.0
+margin_bottom = 626.0
+rect_scale = Vector2( 0.709588, 0.539253 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 19 )
+expand = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnButtonText" type="Label" parent="CombatEncounter/TurnButton"]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 216.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 2 )
+text = "End Turn"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Banner" type="Sprite" parent="CombatEncounter"]
+position = Vector2( 512.459, 11.454 )
+scale = Vector2( 5.68525, 0.504943 )
+texture = ExtResource( 18 )
+
+[node name="Panel" type="Sprite" parent="CombatEncounter"]
+position = Vector2( 512.414, 13.1158 )
+scale = Vector2( 3.17532, 0.371126 )
+texture = ExtResource( 22 )
+
+[node name="CombatLog" type="Label" parent="CombatEncounter"]
+margin_left = 367.0
+margin_right = 658.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+text = "Combat Log"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STRLabel" type="Label" parent="CombatEncounter"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 5 )
+text = "STR = 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DEXLabel" type="Label" parent="CombatEncounter"]
+margin_left = 191.39
+margin_top = -0.591915
+margin_right = 256.39
+margin_bottom = 23.4081
+custom_fonts/font = SubResource( 5 )
+text = "DEX = 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="INTLabel" type="Label" parent="CombatEncounter"]
+margin_left = 767.864
+margin_top = -0.217335
+margin_right = 832.864
+margin_bottom = 23.7827
+custom_fonts/font = SubResource( 5 )
+text = "INT = 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LCKLabel" type="Label" parent="CombatEncounter"]
+margin_left = 895.924
+margin_top = -0.217335
+margin_right = 960.924
+margin_bottom = 23.7827
+custom_fonts/font = SubResource( 5 )
+text = "LCK = 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CombatEncounter/DeckCount" to="CombatEncounter/DeckCount" method="_on_DeckCount_pressed"]

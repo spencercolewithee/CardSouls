@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Inventory.gd" type="Script" id=1]
+[ext_resource path="res://inventory_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://OverworldPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fire.gd" type="Script" id=4]
+[ext_resource path="res://fire.png" type="Texture" id=5]
+[ext_resource path="res://door.png" type="Texture" id=6]
+[ext_resource path="res://Doors/Door9.gd" type="Script" id=7]
+[ext_resource path="res://Assets/GUI/DarkStone.png" type="Texture" id=8]
+[ext_resource path="res://RewardScenes/StatsReward.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 46.9738, 60.1107 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44.7509, 81.8383 )
+
+[node name="World7" type="Node2D"]
+
+[node name="OverworldPlayer" parent="." instance=ExtResource( 3 )]
+show_behind_parent = true
+position = Vector2( 316.24, -128.548 )
+
+[node name="InvScript" type="Node2D" parent="OverworldPlayer"]
+script = ExtResource( 1 )
+window_scene = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="OverworldPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldPlayer/Area2D"]
+position = Vector2( 547.74, 297.479 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -18.1658, 289.991, -2.14066, 597.884, 1023.43, 605.444, 1025.95, 1.94177, 0.379181, 0.681854, -19.2253, 281.515, -4.39279, 208.413, 54.9371, 197.818, 63.3752, 63.6779, 959.179, 68.7175, 962.958, 532.368, 67.155, 542.448, 37.9857, 375.808, -3.33331, 360.975 )
+
+[node name="Fire" type="Node2D" parent="."]
+script = ExtResource( 4 )
+window_scene = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Fire"]
+position = Vector2( 839.612, 424.138 )
+scale = Vector2( 0.208622, 0.20109 )
+texture = ExtResource( 5 )
+
+[node name="Door9" type="Area2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, 68 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Door9"]
+show_behind_parent = true
+light_mask = 2
+position = Vector2( 33.1978, 219.56 )
+scale = Vector2( 0.399727, 0.441026 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door9"]
+position = Vector2( 33.1977, 219.56 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 516.733, 570.238 )
+scale = Vector2( 3.98387, 0.554519 )
+texture = ExtResource( 8 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 992.962, 334.508 )
+scale = Vector2( 0.301881, 4.49608 )
+texture = ExtResource( 8 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 37.3261, 488.66 )
+scale = Vector2( 0.301881, 1.91925 )
+texture = ExtResource( 8 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 28.8504, 138.507 )
+scale = Vector2( 0.301881, 1.19199 )
+texture = ExtResource( 8 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+position = Vector2( 511.966, 35.2092 )
+scale = Vector2( 4.60625, 0.644303 )
+texture = ExtResource( 8 )
